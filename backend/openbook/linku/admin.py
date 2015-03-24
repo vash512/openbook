@@ -1,14 +1,20 @@
 from django.contrib import admin
 from linku.models import Cliente, Telefono, GrupoCliente
+from libreta.models import Deuda
+
+class DeudaInLine(admin.StackedInline):
+    model=Deuda
+    extra=1
 
 class TelefonoInline(admin.TabularInline):
     model = Telefono
+    extra=1
 
 class AdminCleinte(admin.ModelAdmin):
     exclude = ('usuario',)
     list_display = ('nombre', 'correo', 'usuario')
     search_fields=('id', 'nombre', 'correo','direccion', 'descripcion')
-    inlines = [TelefonoInline,]
+    inlines = [TelefonoInline, DeudaInLine]
     def save_model(self, request, obj, form, change):
         if not change:
             obj.usuario = request.user

@@ -11,10 +11,10 @@ class Migration(SchemaMigration):
         # Adding model 'Deuda'
         db.create_table(u'libreta_deuda', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('cleinte', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['linku.Cliente'])),
+            ('cliente', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['linku.Cliente'])),
             ('montoOriginal', self.gf('django.db.models.fields.DecimalField')(max_digits=9, decimal_places=2)),
             ('descripcion', self.gf('django.db.models.fields.TextField')()),
-            ('deaudaActual', self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=9, decimal_places=2, blank=True)),
+            ('deudaActual', self.gf('django.db.models.fields.DecimalField')(null=True, max_digits=9, decimal_places=2, blank=True)),
             ('individual', self.gf('django.db.models.fields.BooleanField')(default=True)),
             ('fecha', self.gf('django.db.models.fields.DateField')(default=datetime.date.today)),
         ))
@@ -97,9 +97,9 @@ class Migration(SchemaMigration):
         },
         u'libreta.deuda': {
             'Meta': {'object_name': 'Deuda'},
-            'cleinte': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['linku.Cliente']"}),
-            'deaudaActual': ('django.db.models.fields.DecimalField', [], {'null': 'True', 'max_digits': '9', 'decimal_places': '2', 'blank': 'True'}),
+            'cliente': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['linku.Cliente']"}),
             'descripcion': ('django.db.models.fields.TextField', [], {}),
+            'deudaActual': ('django.db.models.fields.DecimalField', [], {'null': 'True', 'max_digits': '9', 'decimal_places': '2', 'blank': 'True'}),
             'fecha': ('django.db.models.fields.DateField', [], {'default': 'datetime.date.today'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'individual': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),

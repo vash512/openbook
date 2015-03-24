@@ -12,6 +12,7 @@ class HistorialPagoInLine(admin.TabularInline):
 
 class DeudaAdmin(admin.ModelAdmin):
     inlines = [DesgloseInLine, HistorialPagoInLine]
+    readonly_fields = ('deudaActual',)
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "cliente" and not request.user.is_superuser:
             kwargs["queryset"] = Cliente.objects.filter(usuario=request.user)
