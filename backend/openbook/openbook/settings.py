@@ -27,7 +27,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     #'django_summernote', 
     'linku',
-    #'libreta',
+    'libreta',
     'south',
 )
 
